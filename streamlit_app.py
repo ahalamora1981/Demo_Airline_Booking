@@ -17,6 +17,7 @@ user_input = st.text_input("You: ")
 
 # Add button to submit user input
 if st.button("Submit"):
+    st.write(conversation_history)
     # Generate bot response
     bot_response = generate_response(user_input)
     # Add user input and bot response to conversation history
