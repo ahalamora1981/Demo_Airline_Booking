@@ -49,7 +49,7 @@ st.subheader("对话内容：")
 conversation_container = st.container()
 
 # Add text input field
-user_input = st.text_input("请输入: ", value="")
+user_input = st.text_input("请输入: ")
 
 # Add button to submit user input
 if st.button("Submit", use_container_width=True):
