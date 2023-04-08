@@ -27,16 +27,17 @@ def generate_response(user_input, history):
 以下是您的航班信息：'''
     print("System Msg: ", system_msg)
     
-    openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Who won the world series in 2020?"},
-            {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-            {"role": "user", "content": "Where was it played?"}
-        ],
-        temperature = 0
-    )
+#     openai.ChatCompletion.create(
+#         model="gpt-3.5-turbo",
+#         messages=[
+#             {"role": "system", "content": "You are a helpful assistant."},
+#             {"role": "user", "content": "Who won the world series in 2020?"},
+#             {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+#             {"role": "user", "content": "Where was it played?"}
+#         ],
+#         temperature = 0
+#     )
+
     bot_response = "You are great!"
     return bot_response
 
