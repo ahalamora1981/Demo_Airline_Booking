@@ -61,7 +61,7 @@ if submit:
     
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
-        conversation_container.write(user)
+        conversation_container.text(user)
         conversation_container.text(bot)
 
 # Add button to clear conversation history
