@@ -49,14 +49,19 @@ st.subheader("对话内容：")
 conversation_container = st.container()
 
 # Add text input field
-user_input = st.text_input("请输入: ")
+user_input = st.text_input("请输入: ", key="user_input_key")
 
 # Add button to submit user input
 if st.button("Submit", use_container_width=True):
     # Generate bot response
     bot_response = generate_response(user_input, init_system_msg, st.session_state.conversation_history)
+    
     # Add user input and bot response to conversation history
     st.session_state.conversation_history.append(("用户: " + user_input, "订票机器人: " + bot_response))
+    
+    # Update text input key to clear its contents
+    st.session_state.user_input_key = ""
+    
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
         conversation_container.write(user)
