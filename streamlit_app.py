@@ -49,7 +49,7 @@ st.subheader("对话内容：")
 conversation_container = st.container()
 
 # Add text input field
-user_input = st.text_input("请输入: ")
+user_input = st.text_input("请输入: ", value="")
 
 # Add button to submit user input
 if st.button("Submit", use_container_width=True):
@@ -61,8 +61,6 @@ if st.button("Submit", use_container_width=True):
     for user, bot in st.session_state.conversation_history:
         conversation_container.write(user)
         conversation_container.write(bot)
-        
-    user_input.value = ""
 
 # Add button to clear conversation history
 if st.button("Clear history", use_container_width=True):
