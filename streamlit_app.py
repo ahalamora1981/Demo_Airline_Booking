@@ -46,10 +46,10 @@ st.subheader("对话内容：")
 conversation_container = st.container()
 
 # Add text input field
-with st.form(key='my_form',clear_on_submit=True):
+with st.form(key='my_form', clear_on_submit=True):
     user_input = st.text_input("请输入: ")
     submit = st.form_submit_button(label='提交', use_container_width=True)
-    clear_history = st.button("清空历史对话记录", use_container_width=True)
+    clear_history = st.form_submit_button("清空历史对话记录", use_container_width=True)
 
 # Add button to submit user input
 # if st.button("Submit", use_container_width=True):
