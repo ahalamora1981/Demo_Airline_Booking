@@ -63,4 +63,5 @@ if st.button("Submit", use_container_width=True):
 
 # Add button to clear conversation history
 if st.button("Clear history", use_container_width=True):
-    st.session_state.conversation_history.clear()
+    st.session_state.conversation_history = []
+    
