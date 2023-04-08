@@ -54,7 +54,7 @@ conversation_container = st.container()
 user_input = st.text_input("You: ")
 
 # Add button to submit user input
-if st.button("Submit"):
+if st.button("Submit", use_container_width=True):
     # Generate bot response
     bot_response = generate_response(user_input, st.session_state.conversation_history)
     # Add user input and bot response to conversation history
@@ -65,5 +65,5 @@ if st.button("Submit"):
         conversation_container.text(bot)
 
 # Add button to clear conversation history
-if st.button("Clear history"):
+if st.button("Clear history", use_container_width=True):
     st.session_state.conversation_history.clear()
