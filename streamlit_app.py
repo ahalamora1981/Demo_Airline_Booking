@@ -58,7 +58,7 @@ if submit:
     bot_response = generate_response(user_input, init_system_msg, st.session_state.conversation_history)
     
     # Add user input and bot response to conversation history
-    st.session_state.conversation_history.append(("###用户:### " + user_input, "###订票机器人:### " + bot_response))
+    st.session_state.conversation_history.append(("**用户:** " + user_input, "**订票机器人:** " + bot_response))
     
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
