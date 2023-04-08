@@ -59,8 +59,10 @@ if st.button("Submit", use_container_width=True):
     st.session_state.conversation_history.append(("用户: " + user_input, "订票机器人: " + bot_response))
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
-        conversation_container.text(user)
-        conversation_container.text(bot)
+        conversation_container.write(user)
+        conversation_container.write(bot)
+        
+    user_input.value = ""
 
 # Add button to clear conversation history
 if st.button("Clear history", use_container_width=True):
