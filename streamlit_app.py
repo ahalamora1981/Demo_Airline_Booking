@@ -49,10 +49,13 @@ st.subheader("对话内容：")
 conversation_container = st.container()
 
 # Add text input field
-user_input = st.text_input("请输入: ", key="user_input_key")
+with st.form(key='my_form',clear_on_submit=True):
+    user_input = st.text_input("请输入: ", value="", key="user_input_key")
+    submit = st.form_submit_button(label='提交', use_container_width=True)
 
 # Add button to submit user input
-if st.button("Submit", use_container_width=True):
+# if st.button("Submit", use_container_width=True):
+if submit:
     # Generate bot response
     bot_response = generate_response(user_input, init_system_msg, st.session_state.conversation_history)
     
@@ -70,4 +73,3 @@ if st.button("Submit", use_container_width=True):
 # Add button to clear conversation history
 if st.button("Clear history", use_container_width=True):
     st.session_state.conversation_history = []
-    
