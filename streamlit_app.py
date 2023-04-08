@@ -50,7 +50,7 @@ conversation_container = st.container()
 
 # Add text input field
 with st.form(key='my_form',clear_on_submit=True):
-    user_input = st.text_input("请输入: ", value="", key="user_input_key")
+    user_input = st.text_input("请输入: ")
     submit = st.form_submit_button(label='提交', use_container_width=True)
 
 # Add button to submit user input
@@ -61,9 +61,6 @@ if submit:
     
     # Add user input and bot response to conversation history
     st.session_state.conversation_history.append(("用户: " + user_input, "订票机器人: " + bot_response))
-    
-    # Update text input key to clear its contents
-    st.session_state.user_input_key = ""
     
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
