@@ -10,7 +10,8 @@ def generate_response(user_input):
     return bot_response
 
 # Initialize conversation history
-st.session_state.conversation_history = []
+if not st.session_state.conversation_history:
+    st.session_state.conversation_history = []
 
 # Add text input field
 user_input = st.text_input("You: ")
