@@ -63,8 +63,8 @@ if submit:
     st.session_state.conversation_history.append(("**用户:** " + user_input, "**订票机器人:** " + bot_response))
     
     # Display conversation history
+    i = 0
     for user, bot in st.session_state.conversation_history:
-        i = 0
         if i == 0:
             conversation_container.markdown(user)
             conversation_container.markdown(bot)
