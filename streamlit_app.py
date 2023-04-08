@@ -10,7 +10,7 @@ def generate_response(user_input):
     return bot_response
 
 # Initialize conversation history
-if "conversation_history" not in locals():
+if "conversation_history" not in locals() or "conversation_history" not in globals():
     conversation_history = []
 
 # Add text input field
