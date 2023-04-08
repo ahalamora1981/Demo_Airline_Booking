@@ -1,1 +1,1 @@
-opneai
+openai
