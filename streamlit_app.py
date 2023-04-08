@@ -14,7 +14,7 @@ init_system_msg = '''###从用户输入中抽取信息：出发城市、到达�
 - 【航空公司】：<航空公司>
 - 【仓位等级】：<仓位等级>
 
-请您再告诉我<用顿号分割未知信息的名称>，谢谢！
+请您再告诉我<用顿号分割缺失信息的名称>，谢谢！
 """
 '''
 
@@ -65,13 +65,10 @@ if submit:
     # Display conversation history
     i = 0
     for user, bot in st.session_state.conversation_history:
-        if i == 0:
-            conversation_container.markdown(user)
-            conversation_container.markdown(bot)
-        else:
+        if i != 0:
             conversation_container.markdown("---")
-            conversation_container.markdown(user)
-            conversation_container.markdown(bot)
+        conversation_container.markdown(user)
+        conversation_container.markdown(bot)
         i += 1
 
 # Add button to clear conversation history
