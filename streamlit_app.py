@@ -38,7 +38,7 @@ def generate_response(user_input, history):
 #         temperature = 0
 #     )
     
-    bot_response = "You are great!" + time.time()
+    bot_response = "You are great!" + str(time.time())
     return bot_response
 
 # Initialize conversation history
