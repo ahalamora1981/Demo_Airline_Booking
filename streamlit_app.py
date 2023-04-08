@@ -3,12 +3,7 @@ import openai
 import time
 
 
-# Define function to generate bot response
-def generate_response(user_input, history):
-    if history:
-        system_msg = history[-1][1].strip("订票机器人: ")
-    else:
-        system_msg = '''### 从用户输入中抽取的发出城市、到达城市、航班日期、航空公司、仓位等级，并回复。如有缺失的信息，请向对方发问；如信息完整，就不要发问。 ###
+init_system_msg = '''### 从用户输入中抽取的发出城市、到达城市、航班日期、航空公司、仓位等级，并回复。如有缺失的信息，请向对方发问；如信息完整，就不要发问。 ###
 
 ### 格式（对于缺失的信息，填写<未知>）###
 
@@ -22,8 +17,14 @@ def generate_response(user_input, history):
 
 请您再告诉我<用顿号分割缺失信息的名称>，谢谢！
 """
+'''
 
-以下是您的航班信息：'''
+# Define function to generate bot response
+def generate_response(user_input, init_system_msg, history):
+    system_msg = init_system_msg
+    if history:
+        for user, bot in history:
+            system_msg += user + "\n" + bot + "\n"
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -37,7 +38,7 @@ def generate_response(user_input, history):
     return bot_response
 
 # Initialize conversation history
-if not st.session_state.conversation_history:
+if "conversation_history" not in st.session_state.keys():
     st.session_state.conversation_history = []
 
 # Set page title
@@ -53,7 +54,7 @@ user_input = st.text_input("请输入: ")
 # Add button to submit user input
 if st.button("Submit", use_container_width=True):
     # Generate bot response
-    bot_response = generate_response(user_input, st.session_state.conversation_history)
+    bot_response = generate_response(user_input, init_system_msg, st.session_state.conversation_history)
     # Add user input and bot response to conversation history
     st.session_state.conversation_history.append(("用户: " + user_input, "订票机器人: " + bot_response))
     # Display conversation history
