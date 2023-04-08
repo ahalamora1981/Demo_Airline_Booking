@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+import time
 
 
 # Define function to generate bot response
@@ -37,7 +38,7 @@ def generate_response(user_input, history):
 #         temperature = 0
 #     )
     
-    bot_response = "You are great!"
+    bot_response = "You are great!" + time.time()
     return bot_response
 
 # Initialize conversation history
