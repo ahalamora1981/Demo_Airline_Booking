@@ -60,7 +60,7 @@ if st.button("Submit", use_container_width=True):
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
         conversation_container.write(user)
-        conversation_container.write(bot)
+        conversation_container.text(bot)
 
 # Add button to clear conversation history
 if st.button("Clear history", use_container_width=True):
