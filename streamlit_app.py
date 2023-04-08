@@ -64,8 +64,15 @@ if submit:
     
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
-        conversation_container.markdown(user)
-        conversation_container.markdown(bot)
+        i = 0
+        if i == 0:
+            conversation_container.markdown(user)
+            conversation_container.markdown(bot)
+        else:
+            conversation_container.markdown("---")
+            conversation_container.markdown(user)
+            conversation_container.markdown(bot)
+        i += 1
 
 # Add button to clear conversation history
 if clear_history:
