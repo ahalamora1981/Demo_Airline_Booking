@@ -1,8 +1,6 @@
 import streamlit as st
 import openai
 
-# Set page title
-st.title("Chat with Bot")
 
 # Define function to generate bot response
 def generate_response(user_input, history):
@@ -45,6 +43,13 @@ def generate_response(user_input, history):
 if not st.session_state.conversation_history:
     st.session_state.conversation_history = []
 
+# Set page title
+st.title("航空公司订票AI机器人")    
+st.subheader("对话内容：")
+
+# Add a conversation container
+conversation_container = st.container()
+
 # Add text input field
 user_input = st.text_input("You: ")
 
@@ -56,8 +61,8 @@ if st.button("Submit"):
     st.session_state.conversation_history.append(("You: " + user_input, "Bot: " + bot_response))
     # Display conversation history
     for user, bot in st.session_state.conversation_history:
-        st.text(user)
-        st.text(bot)
+        conversation_container.text(user)
+        conversation_container.text(bot)
 
 # Add button to clear conversation history
 if st.button("Clear history"):
