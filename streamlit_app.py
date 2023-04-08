@@ -23,7 +23,8 @@ def generate_response(user_input, history):
 """
 
 以下是您的航班信息：'''
-    print("System Msg: ", system_msg)
+        
+    st.write("System Msg: ", system_msg)
     
 #     openai.ChatCompletion.create(
 #         model="gpt-3.5-turbo",
@@ -35,7 +36,7 @@ def generate_response(user_input, history):
 #         ],
 #         temperature = 0
 #     )
-
+    
     bot_response = "You are great!"
     return bot_response
 
