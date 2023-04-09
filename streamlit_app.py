@@ -19,7 +19,7 @@ init_system_msg = '''###从用户输入中抽取信息：出发城市、到达�
 '''
 
 # Define function to generate bot response
-def generate_response(user_input, init_system_msg, history):
+def generate_response(user_input, init_system_msg=init_system_msg, history=[]):
     system_msg = {"role": "system", "content": init_system_msg}
     messages = [system_msg]
     
@@ -59,7 +59,7 @@ with st.form(key='my_form', clear_on_submit=True):
 # if st.button("Submit", use_container_width=True):
 if submit:
     # Generate bot response
-    bot_response = generate_response(user_input, init_system_msg, st.session_state.conversation_history)
+    bot_response = generate_response(user_input, historty=st.session_state.conversation_history)
     
     # Add user input and bot response to conversation history
     st.session_state.conversation_history.append({"user": user_input, "bot": bot_response})
