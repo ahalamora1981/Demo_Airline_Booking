@@ -23,7 +23,7 @@ def generate_response(user_input, init_system_msg=init_system_msg, history=[]):
     system_msg = {"role": "system", "content": init_system_msg}
     messages = [system_msg]
     
-    if histroy:
+    if history:
         for conv in history:
             messages.append({"role": "user", "content": conv["user"]})
             messages.append({"role": "assistant", "content": conv["bot"]})
