@@ -20,17 +20,16 @@ init_system_msg = '''###从用户输入中抽取信息：出发城市、到达�
 
 # Define function to generate bot response
 def generate_response(user_input, init_system_msg, history):
-    system_msg = init_system_msg
-    if history:
-        for user, bot in history:
-            system_msg += user + "\n" + bot + "\n"
+    system_msg = {"role": "system", "content": system_msg}
+    messages = [system_msg]
+    
+    for conv in history:
+        messages.append({"role": "user", "content": conv["user"]})
+        messages.append({"role": "assistant", "content": conv["bot"]})
 
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": system_msg},
-            {"role": "user", "content": user_input}
-        ],
+        model = "gpt-3.5-turbo",
+        messages = messages,
         temperature = 0
     )
     bot_response = response['choices'][0]['message']['content']
@@ -60,15 +59,15 @@ if submit:
     bot_response = generate_response(user_input, init_system_msg, st.session_state.conversation_history)
     
     # Add user input and bot response to conversation history
-    st.session_state.conversation_history.append(("**用户:** " + user_input, "**订票机器人:** " + bot_response))
+    st.session_state.conversation_history.append({"user": user_input, "bot": bot_response})
     
     # Display conversation history
     i = 0
-    for user, bot in st.session_state.conversation_history:
+    for conv in st.session_state.conversation_history:
         if i != 0:
             conversation_container.markdown("---")
-        conversation_container.markdown(user)
-        conversation_container.markdown(bot)
+        conversation_container.markdown("**用户：**" + conv["user"])
+        conversation_container.markdown("**订票AI：**" + conv["bot"])
         i += 1
 
 # Add button to clear conversation history
