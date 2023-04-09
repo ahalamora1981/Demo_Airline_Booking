@@ -77,8 +77,8 @@ if submit:
     
     # Display conversation history
     for conv in st.session_state.conversation_history:
-        conversation_container.markdown("**用户：**" + conv["user"])
-        conversation_container.markdown("**订票AI：**" + conv["bot"])
+        conversation_container.markdown("**用户:** " + conv["user"])
+        conversation_container.markdown("**订票AI:** " + conv["bot"])
         conversation_container.markdown("---")
 
 # Add button to clear conversation history
