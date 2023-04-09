@@ -65,13 +65,10 @@ if submit:
     st.session_state.conversation_history.append({"user": user_input, "bot": bot_response})
     
     # Display conversation history
-    i = 0
     for conv in st.session_state.conversation_history:
-        if i != 0:
-            conversation_container.markdown("---")
         conversation_container.markdown("**用户：**" + conv["user"])
         conversation_container.markdown("**订票AI：**" + conv["bot"])
-        i += 1
+        conversation_container.markdown("---")
 
 # Add button to clear conversation history
 if clear_history:
