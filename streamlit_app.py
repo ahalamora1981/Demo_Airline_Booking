@@ -20,7 +20,7 @@ init_system_msg = '''###从用户输入中抽取信息：出发城市、到达�
 
 # Define function to generate bot response
 def generate_response(user_input, init_system_msg, history):
-    system_msg = {"role": "system", "content": system_msg}
+    system_msg = {"role": "system", "content": init_system_msg}
     messages = [system_msg]
     
     for conv in history:
