@@ -60,7 +60,7 @@ st.subheader("对话内容：")
 conversation_container = st.container()
 
 # Add text input field
-with st.form(key='my_form', clear_on_submit=True):
+with st.form(key='input_form', clear_on_submit=True):
     user_input = st.text_input("请输入: ")
     submit = st.form_submit_button(label='提交', use_container_width=True)
     clear_history = st.form_submit_button("清空历史对话记录", use_container_width=True)
@@ -74,11 +74,12 @@ if submit:
     # Add user input and bot response to conversation history
     st.session_state.conversation_history.append({"user": user_input, "bot": bot_response})
     
-    # Display conversation history
-    for conv in st.session_state.conversation_history:
-        conversation_container.markdown("**用户:** " + conv["user"])
-        conversation_container.markdown("**订票AI:** " + conv["bot"])
-        conversation_container.markdown("---")
+    # Display conversation history in a form
+    with st.form(key='output_form', clear_on_submit=True):
+        for conv in st.session_state.conversation_history:
+            conversation_container.markdown("**用户:** " + conv["user"])
+            conversation_container.markdown("**订票AI:** " + conv["bot"])
+            conversation_container.markdown("---")
 
 # Add button to clear conversation history
 if clear_history:
