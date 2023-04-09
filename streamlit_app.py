@@ -63,7 +63,7 @@ with st.form(key='my_form', clear_on_submit=True):
     user_input = st.text_input("请输入: ")
     submit = st.form_submit_button(label='提交', use_container_width=True)
     clear_history = st.form_submit_button("清空历史对话记录", use_container_width=True)
-    if not st.session_state.conversation_history:
+    if len(st.session_state.conversation_history) == 0:
         st.write("对话历史记录已清空")
 
 # Add button to submit user input
