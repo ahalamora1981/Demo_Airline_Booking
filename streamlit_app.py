@@ -23,10 +23,13 @@ def generate_response(user_input, init_system_msg, history):
     system_msg = {"role": "system", "content": init_system_msg}
     messages = [system_msg]
     
-    for conv in history:
-        messages.append({"role": "user", "content": conv["user"]})
-        messages.append({"role": "assistant", "content": conv["bot"]})
-
+    if histroty:
+        for conv in history:
+            messages.append({"role": "user", "content": conv["user"]})
+            messages.append({"role": "assistant", "content": conv["bot"]})
+        
+    messages.append({"role": "user", "content": user_input})
+    
     response = openai.ChatCompletion.create(
         model = "gpt-3.5-turbo",
         messages = messages,
