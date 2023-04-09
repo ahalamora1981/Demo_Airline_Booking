@@ -59,7 +59,7 @@ with st.form(key='my_form', clear_on_submit=True):
 # if st.button("Submit", use_container_width=True):
 if submit:
     # Generate bot response
-    bot_response = generate_response(user_input, historty=st.session_state.conversation_history)
+    bot_response = generate_response(user_input, history=st.session_state.conversation_history)
     
     # Add user input and bot response to conversation history
     st.session_state.conversation_history.append({"user": user_input, "bot": bot_response})
