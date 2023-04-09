@@ -84,4 +84,4 @@ if submit:
 if clear_history:
     st.session_state.conversation_history = []
 
-st.write("对话历史次数: " + str(len(st.session_state.conversation_history)))
+st.write("对话次数: " + str(len(st.session_state.conversation_history)))
