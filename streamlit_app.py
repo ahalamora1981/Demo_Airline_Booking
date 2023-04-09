@@ -82,7 +82,6 @@ if submit:
 # Add button to clear conversation history
 if clear_history:
     st.session_state.conversation_history = []
-    st.write("对话历史记录已清空")
 
 if len(st.session_state.conversation_history) == 0:
     st.write("对话历史记录已清空")
