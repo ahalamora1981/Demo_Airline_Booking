@@ -3,7 +3,6 @@ import streamlit as st
 import openai
 
 
-
 # This is the initial message for ChatGPT
 INIT_SYSTEM_MSG = '''### 你是一个航空公司订票专员，你的任务是根据用户的输入获取下面“航班预订信息标准格式”中的预订信息，不准获取“航班预订信息标准格式”以外的其他任何信息。 ###
 ### 如果“航班预订信息标准格式”内的预订信息获取不完整，请继续向用户提问，直到预订信息获取完整为止。 ###
